@@ -30,6 +30,7 @@ public class CachingBreedFetcher implements BreedFetcher {
             cache.put(breed, subbreeds);
             callsMade++;
         } catch (BreedNotFoundException e) {
+            callsMade++;
             throw e;
         }
         return cache.get(breed);
