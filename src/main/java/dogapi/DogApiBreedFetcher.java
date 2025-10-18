@@ -33,7 +33,8 @@ public class DogApiBreedFetcher implements BreedFetcher {
             if (!response.isSuccessful()) {
                 throw new BreedNotFoundException("Failed to fetch breed info: \" + response");
             }
-            String jsonData = response.body().toString();
+            assert response.body() != null;
+            String jsonData = response.body().string();
             JSONObject json = new JSONObject(jsonData);
 
             if (!json.getString("status").equals("success")) {
